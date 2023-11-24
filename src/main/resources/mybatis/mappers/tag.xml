@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+                        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+                        
+<mapper namespace="com.a1.sinzi.dao.tagDAO">
+
+	<select id="getTagList" resultType="tag">
+			select * from tag;	
+	</select>
+	
+	<insert id="insertTag" parameterType="tag">
+		<![CDATA[
+			insert into tag(tag_no, tag, board_cd)
+			values(#{tag_no}, #{tag}, #{board_cd})
+		]]>
+	</insert>
+	
+	<update id="updateTag" parameterType="tag">
+		<![CDATA[
+			update tag set tag=#{tag}, board_cd=#{board_cd}
+			where tag_no=#{tag_no}
+		]]>		
+	</update>
+	
+	<delete id="deleteTag" parameterType="tag">
+		<![CDATA[
+			delete from tag where tag_no=#{tag_no}
+		]]>		
+		
+	</delete>
+</mapper>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+                        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+                        
+<mapper namespace="com.a1.sinzi.dao.postDAO">
+
+	<select id="getPostList" resultType="post">
+			select * from post;	
+	</select>
+	
+	<insert id="insertPost" parameterType="post">
+		<![CDATA[
+			insert into post(post_no, board_cd, post_sj, post_cn, regstr_id, reg_dt)
+			values(#{post_no}, #{board_cd}, #{post_sj}, #{post_cn}, #{regstr_id}, #{reg_dt})
+		]]>
+	</insert>
+	
+	<update id="updatePost" parameterType="post">
+		<![CDATA[
+			update post set board_cd=#{board_cd}, post_sj=#{post_sj}, post_cn=#{post_cn}
+			where post_no=#{post_no} and board_cd=#{board_cd}
+		]]>		
+	</update>
+	
+	<delete id="deletePost" parameterType="post">
+		<![CDATA[
+			delete from post where post_no=#{post_no} and board_cd=#{board_cd}
+		]]>		
+		
+	</delete>
+</mapper>
